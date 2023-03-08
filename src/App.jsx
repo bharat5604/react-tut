@@ -1,26 +1,23 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
+import About from "./pages/About";
+import Home from "./pages/Home";
+import Test from "./pages/Test";
+import User from "./pages/User";
+
+export const themeContext = React.createContext();
 
 function App() {
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts")
-      .then((res) => res.json())
-      .then((result) => setData(result));
-  }, []);
-
-  // console.log("data", data);
-
   return (
-    <div className="">
-      <div className="grid grid-cols-3 gap-4 ">
-        {data.map((item) => (
-          <div className="p-4 rounded-md shadow-lg border" key={item?.id}>
-            <h1 className="text-blue-600">{item?.title}</h1>
-            <p>{item?.body}</p>
-          </div>
-        ))}
-      </div>
-    </div>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="/user/:id" element={<User />} />
+        <Route path="about" element={<About />} />
+      </Route>
+      <Route path="/test" element={<Test />} />
+    </Routes>
   );
 }
 
