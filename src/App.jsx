@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import About from "./pages/About";
+import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import Test from "./pages/Test";
 import User from "./pages/User";
@@ -15,6 +16,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path="/user/:id" element={<User />} />
         <Route path="about" element={<About />} />
+        <Route path="contact" element={<Contact />} />
       </Route>
       <Route path="/test" element={<Test />} />
     </Routes>
